@@ -1,4 +1,4 @@
-# Bullet Chart (ICMPD)
+# Bullet Chart Power BI
 
 A Power BI **custom visual** — a Stephen Few style bullet chart: a value bar
 measured against a target marker over qualitative bands (poor / satisfactory /
@@ -13,7 +13,7 @@ You don't need to build anything to use it. Grab the packaged visual and import 
 1. Download `release/BulletChart-ICMPD-v1.1.0.pbiviz`.
 2. In Power BI Desktop, open the **Visualizations** pane → `···` →
    **Import a visual from a file**.
-3. Select the `.pbiviz`. It appears as **Bullet Chart (ICMPD)**.
+3. Select the `.pbiviz`. It appears as **Bullet Chart**.
 
 ## Field wells
 
