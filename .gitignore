@@ -1,0 +1,21 @@
+# Dependencies (regenerated with `npm install`)
+node_modules/
+
+# pbiviz build output & intermediates
+.tmp/
+dist/
+webpack.statistics.prod.html
+
+# Dev-server certificates
+*.crt
+*.key
+.api/
+
+# Logs / OS / editor cruft
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.Rproj.user/
+.Rhistory
+.RData

@@ -1,0 +1,83 @@
+{
+    "dataRoles": [
+        { "displayName": "Category", "description": "One bar per category (e.g. wilaya, indicator, project)", "name": "category", "kind": "Grouping" },
+        { "displayName": "Value", "description": "The actual measured value (the bar)", "name": "value", "kind": "Measure", "requiredTypes": [{ "numeric": true }, { "integer": true }] },
+        { "displayName": "Target", "description": "Comparison target (the marker line)", "name": "target", "kind": "Measure", "requiredTypes": [{ "numeric": true }, { "integer": true }] },
+        { "displayName": "Poor (max)", "description": "Optional. Upper bound of the 'poor' band", "name": "poor", "kind": "Measure", "requiredTypes": [{ "numeric": true }, { "integer": true }] },
+        { "displayName": "Satisfactory (max)", "description": "Optional. Upper bound of the 'satisfactory' band", "name": "satisfactory", "kind": "Measure", "requiredTypes": [{ "numeric": true }, { "integer": true }] },
+        { "displayName": "Maximum (scale)", "description": "Optional. End of the axis / 'good' band", "name": "maximum", "kind": "Measure", "requiredTypes": [{ "numeric": true }, { "integer": true }] }
+    ],
+    "dataViewMappings": [
+        {
+            "conditions": [
+                { "category": { "max": 1 }, "value": { "max": 1 }, "target": { "max": 1 }, "poor": { "max": 1 }, "satisfactory": { "max": 1 }, "maximum": { "max": 1 } }
+            ],
+            "categorical": {
+                "categories": {
+                    "for": { "in": "category" },
+                    "dataReductionAlgorithm": { "top": { "count": 200 } }
+                },
+                "values": {
+                    "select": [
+                        { "bind": { "to": "value" } },
+                        { "bind": { "to": "target" } },
+                        { "bind": { "to": "poor" } },
+                        { "bind": { "to": "satisfactory" } },
+                        { "bind": { "to": "maximum" } }
+                    ]
+                }
+            }
+        }
+    ],
+    "objects": {
+        "valueBar": {
+            "properties": {
+                "fill": { "type": { "fill": { "solid": { "color": true } } } },
+                "thickness": { "type": { "numeric": true } }
+            }
+        },
+        "target": {
+            "properties": {
+                "fill": { "type": { "fill": { "solid": { "color": true } } } },
+                "strokeWidth": { "type": { "numeric": true } }
+            }
+        },
+        "bands": {
+            "properties": {
+                "mode": { "type": { "enumeration": [] } },
+                "poorPct": { "type": { "numeric": true } },
+                "satisfactoryPct": { "type": { "numeric": true } },
+                "maxPct": { "type": { "numeric": true } },
+                "poorColor": { "type": { "fill": { "solid": { "color": true } } } },
+                "satisfactoryColor": { "type": { "fill": { "solid": { "color": true } } } },
+                "goodColor": { "type": { "fill": { "solid": { "color": true } } } }
+            }
+        },
+        "categoryLabels": {
+            "properties": {
+                "show": { "type": { "bool": true } },
+                "fontColor": { "type": { "fill": { "solid": { "color": true } } } },
+                "fontSize": { "type": { "formatting": { "fontSize": true } } }
+            }
+        },
+        "valueLabels": {
+            "properties": {
+                "show": { "type": { "bool": true } },
+                "fontColor": { "type": { "fill": { "solid": { "color": true } } } },
+                "fontSize": { "type": { "formatting": { "fontSize": true } } }
+            }
+        },
+        "targetLabels": {
+            "properties": {
+                "show": { "type": { "bool": true } },
+                "fontColor": { "type": { "fill": { "solid": { "color": true } } } },
+                "fontSize": { "type": { "formatting": { "fontSize": true } } }
+            }
+        }
+    },
+    "supportsHighlight": true,
+    "tooltips": {
+        "supportedTypes": { "default": true, "canvas": true }
+    },
+    "privileges": []
+}
